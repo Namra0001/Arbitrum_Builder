@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Interactive blockchain mining simulator — learn hashing, nonces, and chain immutability">
+  <title>Block Simulator | Arbitrum Builder</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.svg" alt="Arbitrum Builder Logo" width="40" height="40">
+        <span>Arbitrum Builder</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="concepts.html">Concepts</a>
+        <a href="prices.html">Live Prices</a>
+        <a href="simulator.html" class="active">Block Simulator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-banner">
+      <div class="container">
+        <h1>Block Mining Simulator</h1>
+        <p>Experience proof-of-work mining, hashing, and blockchain immutability — hands on.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="simulator-intro">
+          <strong>How it works:</strong> Enter data for Block 1 and click "Mine Block" — the simulator increments the
+          nonce
+          until the SHA-256 hash starts with <code>00</code> (simulated proof-of-work). Block 2 automatically links to
+          Block 1's hash.
+          Try changing Block 1's data after mining — Block 2 will break, demonstrating chain immutability.
+        </div>
+
+        <div class="simulator-grid">
+          <!-- Block 1 -->
+          <div class="block-panel" id="block1Panel">
+            <div class="block-panel-header">
+              <h3>Block 1</h3>
+              <span class="block-status pending" id="block1Status">Not Mined</span>
+            </div>
+            <div class="block-panel-body">
+              <div class="form-group">
+                <label for="block1Data">Block Data</label>
+                <input type="text" id="block1Data" value="Arbitrum Builder - Genesis Block"
+                  placeholder="Enter block data">
+              </div>
+              <div class="form-group">
+                <label for="block1PrevHash">Previous Hash</label>
+                <input type="text" id="block1PrevHash"
+                  value="0000000000000000000000000000000000000000000000000000000000000000" readonly>
+              </div>
+              <div class="form-group">
+                <label for="block1Nonce">Nonce</label>
+                <input type="number" id="block1Nonce" value="0" min="0">
+              </div>
+              <div class="form-group">
+                <label>Hash Output</label>
+                <div class="hash-display" id="block1Hash">—</div>
+              </div>
+              <button class="btn btn-primary" id="mineBlock1Btn">Mine Block 1</button>
+              <div class="mining-indicator" id="mining1Indicator">
+                <div class="spinner"></div>
+                Mining... searching for valid nonce
+              </div>
+            </div>
+          </div>
+
+          <div class="chain-link-col">
+            <div class="chain-link-badge">Previous Hash Link</div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+
+          <!-- Block 2 -->
+          <div class="block-panel" id="block2Panel">
+            <div class="block-panel-header">
+              <h3>Block 2</h3>
+              <span class="block-status pending" id="block2Status">Waiting for Block 1</span>
+            </div>
+            <div class="block-panel-body">
+              <div class="form-group">
+                <label for="block2Data">Block Data</label>
+                <input type="text" id="block2Data" value="Transaction: Alice sends 5 ETH to Bob"
+                  placeholder="Enter block data">
+              </div>
+              <div class="form-group">
+                <label for="block2PrevHash">Previous Hash (from Block 1)</label>
+                <input type="text" id="block2PrevHash" value="" readonly placeholder="Mined from Block 1">
+              </div>
+              <div class="form-group">
+                <label for="block2Nonce">Nonce</label>
+                <input type="number" id="block2Nonce" value="0" min="0">
+              </div>
+              <div class="form-group">
+                <label>Hash Output</label>
+                <div class="hash-display" id="block2Hash">—</div>
+              </div>
+              <button class="btn btn-primary" id="mineBlock2Btn" disabled>Mine Block 2</button>
+              <div class="mining-indicator" id="mining2Indicator">
+                <div class="spinner"></div>
+                Mining... searching for valid nonce
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="Arbitrum Builder" width="28" height="28">
+        <span>Arbitrum Builder</span>
+      </div>
+      <div class="footer-info">
+        Built by <strong>Namra Dabhi</strong> &middot;
+        Batch: <strong>Arbitrum Builder Pods</strong> &middot;
+        <a href="https://github.com/yourusername/arbitrum-builder" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="concepts.html">Concepts</a>
+        <a href="prices.html">Prices</a>
+        <a href="simulator.html">Simulator</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/simulator.js"></script>
+</body>
+
+</html>
