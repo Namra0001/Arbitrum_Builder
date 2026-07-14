@@ -79,7 +79,7 @@ Add screenshots of each page here before submission:
 Before submitting, update the footer on all pages with your details:
 
 - **Your Name** — replace with your actual name
-- **GitHub link** — replace `https://github.com/yourusername/arbitrum-builder` with your repo URL
+- **GitHub link** — replace `https://github.com/Namra0001/arbitrum-builder` with your repo URL
 - **Batch name** — update if different from "Arbitrum Builder Pods"
 
 ## Known Issues & Future Improvements
